@@ -92,6 +92,12 @@ a)  Create a new repository on GitHub in your account named
 b)  Push your code to this new repository by copying and executing the
     snippet on github listed under
     `…or push an existing repository from the command line`.
+    
+### Repository was pushed with these lines from `…or push an existing repository from the command line`: 
+git remote add origin git@github.com:kieselstein/exercise-sheet-3.git
+git branch -M main
+git push -u origin main
+
 c)  Regularly push your latest changes to GitHub again and especially do
     so when you are finished with this sheet.
 

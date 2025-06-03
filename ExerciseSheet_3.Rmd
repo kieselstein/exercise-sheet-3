@@ -266,6 +266,13 @@ a)  Go to <https://github.com/owid/owid-datasets/tree/master/datasets>
     and choose a dataset that interests you. You can have a look at
     <https://ourworldindata.org/> to gather some inspiration.
 b)  Download the dataset and track it in git.
+
+```{r echo=TRUE}
+# Loading dataset
+alc_consumption <- readr::read_csv('https://raw.githubusercontent.com/owid/owid-datasets/refs/heads/master/datasets/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017).csv')
+```
+
+
 c)  Put the name / title of the dataset and a link to it below.
 
 -   Dataset Name: ...

@@ -75,7 +75,7 @@ e)  Knit this exercise sheet. Some new files will automatically be
     files, as we only want to track the source files themselves. You
     can, but don't need to create a `.gitignore` file. Just do not
     commit these files manually.
-    
+
 ### File was knitted and ExerciseSheet_3.html was not commited and was added to .gitignore.
 
 ## Exercise 2: Putting your Repository on GitHub (3 Points)
@@ -85,18 +85,19 @@ For this task you will upload your solution to GitHub.
 a)  Create a new repository on GitHub in your account named
     `exeRcise-sheet-3`. Make sure you create a **public repository** so
     we are able to see it for grading. Add the link to the repository
-    below: 
+    below:
 
-### Repository was created on GitHub with the link: git@github.com:kieselstein/exercise-sheet-3.git
+### Repository was created on GitHub with the link: [git\@github.com](mailto:git@github.com){.email}:kieselstein/exercise-sheet-3.git
 
 b)  Push your code to this new repository by copying and executing the
     snippet on github listed under
     `…or push an existing repository from the command line`.
-    
-### Repository was pushed with these lines from `…or push an existing repository from the command line`: 
-git remote add origin git@github.com:kieselstein/exercise-sheet-3.git
-git branch -M main
-git push -u origin main
+
+### Repository was pushed with these lines from `…or push an existing repository from the command line`:
+
+git remote add origin
+[git\@github.com](mailto:git@github.com){.email}:kieselstein/exercise-sheet-3.git
+git branch -M main git push -u origin main
 
 c)  Regularly push your latest changes to GitHub again and especially do
     so when you are finished with this sheet.
@@ -116,7 +117,30 @@ a)  Load the `pixar_films` dataset into R. Clean the dataset by removing
     the possible values and what do they mean? Create a factor variable
     for the film rating. Why is this appropriate?
 
-<!-- -->
+```{r echo=TRUE}
+# Loading pixar_films from github
+pixar_films <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-11/pixar_films.csv')
+
+# Loading library tidyverse
+library(tidyverse)
+
+# Removing films without a title
+pixar_films_clean <- pixar_films %>%
+  filter(!is.na(film))
+
+# Inspecting the variable film_rating with the possible values
+unique(pixar_films_clean$film_rating)
+# Output: G, PG and N/A
+# Meaning of film_rating according to
+# https://en.wikipedia.org/wiki/Motion_Picture_Association_film_rating_system [03.06.2025]
+# G General Audiences
+# PG Parental Guidance Suggested
+# N/A Not Available, Not Rated
+
+# Factor variable for film_rating
+pixar_films_clean <- pixar_films_clean %>%
+  mutate(film_rating = factor(film_rating))
+```
 
 b)  Inspect the film titles manually. Which films form a film series? A
     film series can be identified by a common word in the titles of the

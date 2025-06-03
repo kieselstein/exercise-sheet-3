@@ -224,6 +224,37 @@ d)  Choose one of the variables representing the public response and
 
     What do you notice when comparing the scores of the films in a
     series? Do you see any patterns?
+    
+```{r barplot_films, fig.cap="Rotten Tomatoes bar plot of each film, belonging to a series", echo=TRUE}
+# We want only movies in a series
+merged_dataframe <- merged_dataframe %>%
+  filter(!is.na(series))
+
+# Order each film factor within its series by release year
+merged_dataframe <- merged_dataframe %>%
+  group_by(series) %>%
+  arrange(release_date, .by_group = TRUE) %>%
+  mutate(film = factor(film, levels = unique(film))) %>%
+  ungroup()
+
+ggplot(merged_dataframe, aes(
+  x = series,
+  y = rotten_tomatoes,
+  fill = film
+)) + 
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8), width = 0.7) +
+  scale_fill_viridis_d(option = "plasma") + # better colour scheme
+  theme_minimal() + 
+  labs(
+    title = "Rotten Tomatoes Score of each film",
+    subtitle = "by series",
+    x = "Film Series",
+    y = "Rotten Tomatoes Score",
+    fill = "Film Title",
+    caption = "https://github.com/rfordatascience/tidytuesday/tree/main/data/2025/2025-03-11, [03.06.2025]"
+  )
+```
+
 
 ## Exercise 4: Open Analysis (4 points)
 

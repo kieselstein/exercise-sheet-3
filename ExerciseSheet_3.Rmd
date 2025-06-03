@@ -1,5 +1,5 @@
 ---
-title: "Exercise #X"
+title: "Exercise #3"
 subtitle: "Fortgeschrittene Statistische Software für NF"
 author: "Akram Helal (12744494), Seyed Ramtin Hosseini (12781949)"
 date: "`r Sys.Date()`"

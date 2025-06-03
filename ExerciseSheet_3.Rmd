@@ -275,8 +275,8 @@ alc_consumption <- readr::read_csv('https://raw.githubusercontent.com/owid/owid-
 
 c)  Put the name / title of the dataset and a link to it below.
 
--   Dataset Name: ...
--   Link: <https://github.com/owid/owid-datasets/>...
+-   Dataset Name: Alcohol consumption since 1890 (Alexander & Holmes, 2017)
+-   Link: <https://github.com/owid/owid-datasets/tree/master/datasets/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)>
 
 d)  Come up with a (research) question you want to answer with the data
     and briefly explain why you believe this is an interesting question

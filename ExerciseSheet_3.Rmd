@@ -352,6 +352,12 @@ change_dataframe <- change_dataframe %>%
 f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.
+    
+```{r change_in_alc_plot, fig.cap="Countries which changed their dominant alcohol type between 1964 and 2014", echo=TRUE}
+
+
+```
+
 
 ## Final Note
 

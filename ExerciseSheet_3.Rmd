@@ -354,8 +354,44 @@ f)  Create a meaningful plot / figure with the dataset. Make sure to
     correctly label the figure.
     
 ```{r change_in_alc_plot, fig.cap="Countries which changed their dominant alcohol type between 1964 and 2014", echo=TRUE}
+change_dataframe <- inner_join(change1964, change2014, by = "country") %>%
+  mutate(
+    changed    = (dominant1964 != dominant2014),
+    transition = paste(dominant1964, "→", dominant2014)
+  ) %>%
+  filter(changed)
 
+# Transition is need for plot with the entity
+transitions_summary <- change_dataframe %>%
+  group_by(transition) %>%
+  summarise(
+    n = n(),
+    countries_list = paste(country, collapse = ", ")
+  ) %>%
+  ungroup()
 
+ggplot(transitions_summary, aes(x = transition, y = n, fill = transition)) +
+  geom_col(show.legend = FALSE) +
+  # Showing Countries
+  geom_text(aes(label = countries_list), 
+            vjust = -0.5,        # But Countries above bars
+            size  = 3,           # Fontsize
+            color = "black") + 
+  scale_y_continuous(breaks = seq(0, 2, by = 1)) +
+  labs(
+    title = "Countries that changed their dominant alcohol type",
+    subtitle = "between 1964 and 2014",
+    x = "Changed consumption type (1964 → 2014)",
+    y = "Number of countries",
+    caption = "Github: datasets/Alcohol consumption since 1890 (Alexander & Holmes, 2017), [03.06.2025]"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    axis.text.x     = element_text(angle = 45, hjust = 1),
+    plot.title      = element_text(face = "bold", size = 13),
+    axis.title.x    = element_text(margin = margin(t = 10)),  
+    axis.title.y    = element_text(margin = margin(r = 10))
+  )
 ```
 
 

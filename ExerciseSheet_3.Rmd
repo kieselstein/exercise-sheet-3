@@ -87,17 +87,18 @@ a)  Create a new repository on GitHub in your account named
     we are able to see it for grading. Add the link to the repository
     below:
 
-### Repository was created on GitHub with the link: [git\@github.com](mailto:git@github.com){.email}:kieselstein/exercise-sheet-3.git
+### Repository was created on GitHub with the link: [git\@github.com:kieselstein/exercise-sheet-3.git](mailto:git@github.com:kieselstein/exercise-sheet-3.git){.email}
 
 b)  Push your code to this new repository by copying and executing the
     snippet on github listed under
     `…or push an existing repository from the command line`.
 
-### Repository was pushed with these lines from `…or push an existing repository from the command line`:
+### Repository was pushed with these lines from github:
 
-git remote add origin
-[git\@github.com](mailto:git@github.com){.email}:kieselstein/exercise-sheet-3.git
-git branch -M main git push -u origin main
+-   git remote add origin
+    [git\@github.com:kieselstein/exercise-sheet-3.git](mailto:git@github.com:kieselstein/exercise-sheet-3.git){.email}
+-   git branch -M main
+-   git push -u origin main
 
 c)  Regularly push your latest changes to GitHub again and especially do
     so when you are finished with this sheet.
@@ -148,7 +149,7 @@ b)  Inspect the film titles manually. Which films form a film series? A
     e.g. "Despicable Me" and "Despicable Me 2". Create a dataframe which
     displays a list of the different series with the titles of the films
     and how many films belong to the series. Output the dataframe.
-    
+
 ```{r echo=TRUE}
 # Looking manually on the data, we can see the film series:
 # Cars 1-3, The Incredibles and Incredibles 2, Toy Story 1-4, Monster Inc. and Monster University
@@ -181,13 +182,12 @@ series_dataframe <- pixar_films_clean_series %>%
 series_dataframe
 ```
 
-
 c)  Load the `public_response` dataframe into R. Convert the
     `cinema_score` variable into a factor while ensuring the factor
     levels are defined in ascending order, from the lowest to the
     highest score. Combine `public_response` with the `pixar_films`
     dataset using an appropriate merge variable.
-    
+
 ```{r echo=TRUE}
 # Loading public_response
 public_response <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-11/public_response.csv')
@@ -209,7 +209,6 @@ merged_dataframe <- public_response %>%
   inner_join(pixar_films_clean_series, by = c("film"))
 ```
 
-
 d)  Choose one of the variables representing the public response and
     create a bar plot for the films belonging to a series. Here are the
     details of the plot:
@@ -224,7 +223,7 @@ d)  Choose one of the variables representing the public response and
 
     What do you notice when comparing the scores of the films in a
     series? Do you see any patterns?
-    
+
 ```{r barplot_films, fig.cap="Rotten Tomatoes bar plot of each film, belonging to a series", echo=TRUE}
 # We want only movies in a series
 merged_dataframe <- merged_dataframe %>%
@@ -255,7 +254,6 @@ ggplot(merged_dataframe, aes(
   )
 ```
 
-
 ## Exercise 4: Open Analysis (4 points)
 
 This exercise is a bit more open-ended. You can choose any dataset from
@@ -272,11 +270,12 @@ b)  Download the dataset and track it in git.
 alc_consumption <- readr::read_csv('https://raw.githubusercontent.com/owid/owid-datasets/refs/heads/master/datasets/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017).csv')
 ```
 
-
 c)  Put the name / title of the dataset and a link to it below.
 
--   Dataset Name: Alcohol consumption since 1890 (Alexander & Holmes, 2017)
--   Link: <https://github.com/owid/owid-datasets/tree/master/datasets/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)>
+-   Dataset Name: Alcohol consumption since 1890 (Alexander & Holmes,
+    2017) 
+-   Link:
+    [https://github.com/owid/owid-datasets/tree/master/datasets/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)](https://github.com/owid/owid-datasets/tree/master/datasets/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)){.uri}
 
 d)  Come up with a (research) question you want to answer with the data
     and briefly explain why you believe this is an interesting question

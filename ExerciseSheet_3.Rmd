@@ -283,7 +283,7 @@ d)  Come up with a (research) question you want to answer with the data
     with the dataset and using R.
 
 -   Which countries have experienced the most significant change in
-    their dominant type of alcohol consumption between 1964 and 2014?
+    their dominant type of alcohol consumption between the year 1964 and 2014?
 
 -   This is interesting because it reveals long-term shifts in national
     drinking cultures and possible effects of public policy or global
@@ -293,6 +293,16 @@ e)  Use R to answer your chosen question. Please limit your analysis to
     the functions and techniques we have covered so far in the course.
     You are **not expected** to use advanced statistical models or
     external packages which haven't been introduced.
+    
+```{r echo=TRUE}
+# We only want the year 1964 and 2014
+alc_filterd <- alc_consumption %>%
+  filter(Year %in% c(1964, 2014))
+
+
+```
+
+
 f)  Create a meaningful plot / figure with the dataset. Make sure to
     provide a figure caption (via the chunk options / Rmarkdown) and
     correctly label the figure.

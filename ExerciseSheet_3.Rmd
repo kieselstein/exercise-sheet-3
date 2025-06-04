@@ -319,9 +319,33 @@ alc_filterd <- alc_filterd %>%
       TRUE ~ NA_character_
     )
   ) 
-# is this needed?
-# %>% 
-  #select(Entity, Year, type, consumption)
+
+# Evaluating changes in alc type per year and land (Entity)
+# max value of type
+alc_change <- alc_filterd %>%
+  # Removing NA
+  group_by(Entity, Year) %>%
+  slice_max(order_by = consumption, n=1, with_ties = FALSE) %>%
+  ungroup() %>%
+  select(country = Entity, Year, change_alc = type)
+
+# Joining Values from 1964 and 2014
+change1964 <- alc_change %>%
+  filter(Year == 1964) %>%
+  select(country, dominant1964 = change_alc)
+
+change2014 <- alc_change %>%
+  filter(Year == 2014) %>%
+  select(country, dominant2014 = change_alc)
+
+change_dataframe <- inner_join(change1964, change2014, by = "country") %>%
+  mutate(changed = (dominant1964 != dominant2014)) %>%
+  arrange(desc(changed), country)
+
+# We only want to display the changes in alc type
+change_dataframe <- change_dataframe %>%
+  filter(changed) %>%
+  select(country, dominant1964, dominant2014)
 ```
 
 

@@ -299,7 +299,29 @@ e)  Use R to answer your chosen question. Please limit your analysis to
 alc_filterd <- alc_consumption %>%
   filter(Year %in% c(1964, 2014))
 
-
+# Pivot to longer
+alc_filterd <- alc_filterd %>%
+  pivot_longer(
+    cols = c(
+      "Wine (% total alcohol)",
+      "Beer (% total alcohol)",
+      "Spirits (% total alcohol)"
+      ),
+    names_to = "type",
+    values_to = "consumption"
+  ) %>%
+  mutate(
+    # Renaming
+    type = case_when(
+      str_detect(type, "Beer")    ~ "Beer",
+      str_detect(type, "Wine")    ~ "Wine",
+      str_detect(type, "Spirits") ~ "Spirits",
+      TRUE ~ NA_character_
+    )
+  ) 
+# is this needed?
+# %>% 
+  #select(Entity, Year, type, consumption)
 ```
 
 

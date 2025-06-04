@@ -267,7 +267,7 @@ b)  Download the dataset and track it in git.
 
 ```{r echo=TRUE}
 # Loading dataset
-alc_consumption <- readr::read_csv('https://raw.githubusercontent.com/owid/owid-datasets/refs/heads/master/datasets/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)/Alcohol%20consumption%20since%201890%20(Alexander%20%26%20Holmes%2C%202017).csv')
+alc_consumption <- readr::read_csv('https://raw.githubusercontent.com/owid/owid-datasets/refs/heads/master/datasets/Alcohol%20consumption%20by%20type%20since%201890%20(Alexander%20%26%20Holmes%2C%202017)/Alcohol%20consumption%20by%20type%20since%201890%20(Alexander%20%26%20Holmes%2C%202017).csv')
 ```
 
 c)  Put the name / title of the dataset and a link to it below.
@@ -281,6 +281,14 @@ d)  Come up with a (research) question you want to answer with the data
     and briefly explain why you believe this is an interesting question
     within one sentence. It should be a question that can be answered
     with the dataset and using R.
+
+-   Which countries have experienced the most significant change in
+    their dominant type of alcohol consumption between 1964 and 2014?
+
+-   This is interesting because it reveals long-term shifts in national
+    drinking cultures and possible effects of public policy or global
+    trends.
+
 e)  Use R to answer your chosen question. Please limit your analysis to
     the functions and techniques we have covered so far in the course.
     You are **not expected** to use advanced statistical models or
